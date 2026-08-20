@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Messenger Server Admin Panel</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_main">
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <property name="leftMargin">
+     <number>15</number>
+    </property>
+    <property name="topMargin">
+     <number>15</number>
+    </property>
+    <property name="rightMargin">
+     <number>15</number>
+    </property>
+    <property name="bottomMargin">
+     <number>15</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_header">
+      <item>
+       <widget class="QLabel" name="label_title">
+        <property name="text">
+         <string>🖥️ Server Administration Panel</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size: 22px; font-weight: bold; color: #1a73e8;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_status">
+        <property name="text">
+         <string>● Connected to Database</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #0f9d58; font-weight: bold;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnRefresh">
+        <property name="text">
+         <string>🔄 Refresh</string>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>36</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="documentMode">
+       <bool>false</bool>
+      </property>
+      <property name="tabsClosable">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="tabUsers">
+       <attribute name="title">
+        <string>👥 Users</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_users">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_users_tools">
+          <item>
+           <widget class="QLineEdit" name="lineEditSearchUsers">
+            <property name="placeholderText">
+             <string>🔍 Search by username or ID...</string>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>36</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboFilterStatus">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>36</height>
+             </size>
+            </property>
+            <item>
+             <property name="text">
+              <string>All statuses</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Online</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Offline</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Banned</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnDisconnect">
+            <property name="text">
+             <string>🔌 Disconnect</string>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>130</width>
+              <height>36</height>
+             </size>
+            </property>
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnBan">
+            <property name="text">
+             <string>🚫 Ban</string>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>36</height>
+             </size>
+            </property>
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnUnban">
+            <property name="text">
+             <string>✅ Unban</string>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>36</height>
+             </size>
+            </property>
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tableUsers">
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <column>
+           <property name="text">
+            <string>ID</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Username</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Status</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Last Seen</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>IP Address</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Messages Count</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelUsersCount">
+          <property name="text">
+           <string>Total users: 0</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabMessages">
+       <attribute name="title">
+        <string>💬 Messages</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_messages">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_msg_tools">
+          <item>
+           <widget class="QLineEdit" name="lineEditSearchMessages">
+            <property name="placeholderText">
+             <string>🔍 Search in messages...</string>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>36</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboMsgType">
+            <property name="minimumSize">
+             <size>
+              <width>160</width>
+              <height>36</height>
+             </size>
+            </property>
+            <item>
+             <property name="text">
+              <string>All messages</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Public only</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Private only</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboMsgUser">
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>36</height>
+             </size>
+            </property>
+            <item>
+             <property name="text">
+              <string>All users</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnDeleteMessage">
+            <property name="text">
+             <string>🗑️ Delete</string>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>110</width>
+              <height>36</height>
+             </size>
+            </property>
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tableMessages">
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <column>
+           <property name="text">
+            <string>ID</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>From</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>To</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Type</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Content</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Timestamp</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelMessagesCount">
+          <property name="text">
+           <string>Total messages: 0</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabLogs">
+       <attribute name="title">
+        <string>📋 Action Logs</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_logs">
+        <item>
+         <widget class="QTextEdit" name="textEditLogs">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="placeholderText">
+           <string>Admin actions will appear here...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnClearLogs">
+          <property name="text">
+           <string>Clear Logs</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionRefresh"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionDatabase"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuSettings"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionRefresh">
+   <property name="text">
+    <string>Refresh Data</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionDatabase">
+   <property name="text">
+    <string>Database Connection...</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

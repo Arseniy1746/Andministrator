@@ -1,0 +1,8 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/">
+        <!-- Add icons here if needed, e.g.:
+        <file>icons/ban.png</file>
+        -->
+    </qresource>
+</RCC>
